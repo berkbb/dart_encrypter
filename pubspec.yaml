@@ -1,0 +1,14 @@
+name: dart_encrypter
+description: "Encrypt / Decrypt the String with given Key and IV. It includes built-in password generator also."
+version: 1.0.0
+repository: https://github.com/berkbb/dart_encrypter
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dev_dependencies:
+  lints: ^1.0.0
+  test: ^1.16.0
+dependencies:
+  encrypt: ^5.0.1
+  logbox_color: ^1.0.6
