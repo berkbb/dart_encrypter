@@ -28,4 +28,8 @@ void main() {
   printLog(
       "Password 3: ${Security.generatePassword(true, true, false, false, 25)}",
       LogLevel.debug); // Length 25 password.
+
+  printLog(
+      "Password with prefix: ${Security.generatePasswordwithPrefix(Security.generatePassword(true, true, false, false, 25)!, "xert", "_")}",
+      LogLevel.debug); // Length 25 password with prefix.
 }

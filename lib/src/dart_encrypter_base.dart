@@ -60,8 +60,23 @@ class Security {
       return null;
     }
   }
+
+  ///* Info: Generate password with prefix. return password like "XXXXy'generatedpassword'". XXXX is prefix, y is delimiter.
+  ///* Params:[password] is password,  [prefix] is prefix, [prefixDelimiter] is delimiter for prefix;
+  ///* Returns: String?
+  ///* Notes:
+  static String? generatePasswordwithPrefix(
+      String password, String prefix, String prefixDelimiter) {
+    try {
+      return "$prefix$prefixDelimiter$password";
+    } catch (e) {
+      printLog(e.toString(), LogLevel.error);
+      return null;
+    }
+  }
 }
 
+/// Encryption string extension.
 extension Encryption on String {
   ///* Info: Encyrpting the data.
   ///* Params:  [_key] is is Key String, [iv] is IV String.

@@ -1,6 +1,6 @@
 name: dart_encrypter
 description: "Encrypt / Decrypt the String with given Key and IV. It includes built-in password generator also."
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/berkbb/dart_encrypter
 
 environment:

@@ -23,6 +23,13 @@ void main() {
           Security.generatePassword(false, true, false, true, 12)?.length, 12);
       expect(
           Security.generatePassword(true, true, false, false, 25)?.length, 25);
+      expect(
+          Security.generatePasswordwithPrefix(
+                  Security.generatePassword(true, true, false, false, 25)!,
+                  "xert",
+                  "_")
+              ?.length,
+          30);
     });
   });
 }
