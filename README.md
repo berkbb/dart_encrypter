@@ -8,7 +8,7 @@
 
 ## Features
 
-*Encrypt / Decrypt the String with given Key and IV. It includes built-in password generator also. It uses colored box for outputs if you want.
+* Encrypt / Decrypt the String with given Key and IV. It includes built-in password generator also. It uses colored box for outputs if you want.
 
 
 ## Usage
