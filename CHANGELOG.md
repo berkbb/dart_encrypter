@@ -1,3 +1,7 @@
+## [1.0.2] - 2022-03-11
+
+- Password generator fixed.
+
 ## [1.0.1] - 2022-03-10
 
 - generatePasswordwithPrefix() added.

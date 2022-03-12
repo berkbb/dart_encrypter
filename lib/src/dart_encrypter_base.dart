@@ -11,11 +11,7 @@ class Security {
   ///* Returns: String?
   ///* Notes:
   static String? generatePassword(
-      bool isNumberActive,
-      bool isSpecialCharacherActive,
-      bool isUpperCaseActive,
-      bool isLowerCaseActive,
-      int length) {
+      bool isNumberActive, bool isSpecialCharacherActive, bool isUpperCaseActive, bool isLowerCaseActive, int length) {
     try {
 //ASCII bounds.
       int minUpperLetter = 65;
@@ -32,26 +28,84 @@ class Security {
       for (int i = 0; i < length; i++) {
         int choice;
 
-        choice = rng.nextInt(
-            4); // Four status available: * Uppercase letter, Lowerccase letter, number, special character
+        choice =
+            rng.nextInt(4); // Four status available: * Uppercase letter, Lowerccase letter, number, special character
 
-        if (choice == 0 && isLowerCaseActive) // If 0 comes. lover a-z.
+        if (choice == 0) // If 0 comes. lover a-z.
         {
-          int rangeLower = minLowerLetter +
-              rng.nextInt((maxLowerLetter - minLowerLetter) + 1);
-          sb.writeCharCode(rangeLower);
-        } else if (choice == 1 && isUpperCaseActive) // 1 comes, upper A-Z.
+          if (isLowerCaseActive) {
+            int rangeLower = minLowerLetter + rng.nextInt((maxLowerLetter - minLowerLetter) + 1);
+            sb.writeCharCode(rangeLower);
+          } else {
+            if (isUpperCaseActive) {
+              int rangeUpper = minUpperLetter + rng.nextInt((maxUpperLetter - minUpperLetter) + 1);
+              sb.writeCharCode(rangeUpper);
+            }
+
+            if (isNumberActive) {
+              sb.write(rng.nextInt(10));
+            }
+
+            if (isSpecialCharacherActive) {
+              var selectID = rng.nextInt(specialChars.length);
+              sb.write(specialChars[selectID]);
+            }
+          }
+        } else if (choice == 1) // 1 comes, upper A-Z.
         {
-          int rangeUpper = minUpperLetter +
-              rng.nextInt((maxUpperLetter - minUpperLetter) + 1);
-          sb.writeCharCode(rangeUpper);
-        } else if (choice == 2 && isNumberActive) // 2 comes. a number 0-9.
+          if (isUpperCaseActive) {
+            int rangeUpper = minUpperLetter + rng.nextInt((maxUpperLetter - minUpperLetter) + 1);
+            sb.writeCharCode(rangeUpper);
+          } else {
+            if (isLowerCaseActive) {
+              int rangeLower = minLowerLetter + rng.nextInt((maxLowerLetter - minLowerLetter) + 1);
+              sb.writeCharCode(rangeLower);
+            }
+            if (isNumberActive) {
+              sb.write(rng.nextInt(10));
+            }
+
+            if (isSpecialCharacherActive) {
+              var selectID = rng.nextInt(specialChars.length);
+              sb.write(specialChars[selectID]);
+            }
+          }
+        } else if (choice == 2) // 2 comes. a number 0-9.
         {
-          sb.write(rng.nextInt(10));
+          if (isNumberActive) {
+            sb.write(rng.nextInt(10));
+          } else {
+            if (isLowerCaseActive) {
+              int rangeLower = minLowerLetter + rng.nextInt((maxLowerLetter - minLowerLetter) + 1);
+              sb.writeCharCode(rangeLower);
+            }
+            if (isSpecialCharacherActive) {
+              var selectID = rng.nextInt(specialChars.length);
+              sb.write(specialChars[selectID]);
+            }
+            if (isUpperCaseActive) {
+              int rangeUpper = minUpperLetter + rng.nextInt((maxUpperLetter - minUpperLetter) + 1);
+              sb.writeCharCode(rangeUpper);
+            }
+          }
         } else // 3 comes. special characters.
         {
-          var selectID = rng.nextInt(specialChars.length);
-          sb.write(specialChars[selectID]);
+          if (isSpecialCharacherActive) {
+            var selectID = rng.nextInt(specialChars.length);
+            sb.write(specialChars[selectID]);
+          } else {
+            if (isUpperCaseActive) {
+              int rangeUpper = minUpperLetter + rng.nextInt((maxUpperLetter - minUpperLetter) + 1);
+              sb.writeCharCode(rangeUpper);
+            }
+            if (isLowerCaseActive) {
+              int rangeLower = minLowerLetter + rng.nextInt((maxLowerLetter - minLowerLetter) + 1);
+              sb.writeCharCode(rangeLower);
+            }
+            if (isNumberActive) {
+              sb.write(rng.nextInt(10));
+            }
+          }
         }
       }
 
@@ -65,8 +119,7 @@ class Security {
   ///* Params:[password] is password,  [prefix] is prefix, [prefixDelimiter] is delimiter for prefix;
   ///* Returns: String?
   ///* Notes:
-  static String? generatePasswordwithPrefix(
-      String password, String prefix, String prefixDelimiter) {
+  static String? generatePasswordwithPrefix(String password, String prefix, String prefixDelimiter) {
     try {
       return "$prefix$prefixDelimiter$password";
     } catch (e) {
@@ -85,8 +138,7 @@ extension Encryption on String {
   String? encryptMyData(String _key, String iv) {
     try {
       if (_key.length == 32 && iv.length == 16) {
-        final e = Encrypter(
-            AES(Key.fromUtf8(_key), mode: AESMode.ctr, padding: null));
+        final e = Encrypter(AES(Key.fromUtf8(_key), mode: AESMode.ctr, padding: null));
         final encryptedData = e.encrypt(this, iv: IV.fromUtf8(iv));
         String urlEncData = Uri.encodeComponent(encryptedData.base64);
         return urlEncData;
@@ -107,10 +159,8 @@ extension Encryption on String {
     try {
       if (_key.length == 32 && iv.length == 16) {
         String urlDec = Uri.decodeComponent(this);
-        final e = Encrypter(
-            AES(Key.fromUtf8(_key), mode: AESMode.ctr, padding: null));
-        final decryptedData =
-            e.decrypt(Encrypted.fromBase64(urlDec), iv: IV.fromUtf8(iv));
+        final e = Encrypter(AES(Key.fromUtf8(_key), mode: AESMode.ctr, padding: null));
+        final decryptedData = e.decrypt(Encrypted.fromBase64(urlDec), iv: IV.fromUtf8(iv));
 
         return decryptedData;
       } else {

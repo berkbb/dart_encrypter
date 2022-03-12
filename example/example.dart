@@ -20,14 +20,20 @@ void main() {
   }
 
   printLog(
-      "Password 1: ${Security.generatePassword(true, true, true, true, 16)}",
-      LogLevel.debug); // Length 16 password.
+      "Password 1: ${Security.generatePassword(true, true, true, true, 16)}", LogLevel.debug); // Length 16 password.
   printLog(
-      "Password 2: ${Security.generatePassword(false, true, false, true, 12)}",
-      LogLevel.debug); // Length 12 password.
+      "Password 2: ${Security.generatePassword(false, true, false, true, 12)}", LogLevel.debug); // Length 12 password.
   printLog(
-      "Password 3: ${Security.generatePassword(true, true, false, false, 25)}",
-      LogLevel.debug); // Length 25 password.
+      "Password 3: ${Security.generatePassword(true, true, false, false, 25)}", LogLevel.debug); // Length 25 password.
+
+  printLog(
+      "Password 4: ${Security.generatePassword(false, false, true, true, 12)}", LogLevel.debug); // Length 12 password.
+
+  printLog(
+      "Password 5: ${Security.generatePassword(true, false, false, false, 12)}", LogLevel.debug); // Length 12 password.
+
+  printLog(
+      "Password 6: ${Security.generatePassword(false, true, false, false, 12)}", LogLevel.debug); // Length 12 password.
 
   printLog(
       "Password with prefix: ${Security.generatePasswordwithPrefix(Security.generatePassword(true, true, false, false, 25)!, "xert", "_")}",
