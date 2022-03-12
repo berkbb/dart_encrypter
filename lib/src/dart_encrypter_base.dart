@@ -31,7 +31,7 @@ class Security {
         choice =
             rng.nextInt(4); // Four status available: * Uppercase letter, Lowerccase letter, number, special character
 
-        if (choice == 0) // If 0 comes. lover a-z.
+        if (choice == 0) // If 0 comes. lower a-z.
         {
           if (isLowerCaseActive) {
             int rangeLower = minLowerLetter + rng.nextInt((maxLowerLetter - minLowerLetter) + 1);
@@ -40,15 +40,18 @@ class Security {
             if (isUpperCaseActive) {
               int rangeUpper = minUpperLetter + rng.nextInt((maxUpperLetter - minUpperLetter) + 1);
               sb.writeCharCode(rangeUpper);
+              continue;
             }
 
             if (isNumberActive) {
               sb.write(rng.nextInt(10));
+              continue;
             }
 
             if (isSpecialCharacherActive) {
               var selectID = rng.nextInt(specialChars.length);
               sb.write(specialChars[selectID]);
+              continue;
             }
           }
         } else if (choice == 1) // 1 comes, upper A-Z.
@@ -60,14 +63,17 @@ class Security {
             if (isLowerCaseActive) {
               int rangeLower = minLowerLetter + rng.nextInt((maxLowerLetter - minLowerLetter) + 1);
               sb.writeCharCode(rangeLower);
+              continue;
             }
             if (isNumberActive) {
               sb.write(rng.nextInt(10));
+              continue;
             }
 
             if (isSpecialCharacherActive) {
               var selectID = rng.nextInt(specialChars.length);
               sb.write(specialChars[selectID]);
+              continue;
             }
           }
         } else if (choice == 2) // 2 comes. a number 0-9.
@@ -78,14 +84,17 @@ class Security {
             if (isLowerCaseActive) {
               int rangeLower = minLowerLetter + rng.nextInt((maxLowerLetter - minLowerLetter) + 1);
               sb.writeCharCode(rangeLower);
+              continue;
             }
             if (isSpecialCharacherActive) {
               var selectID = rng.nextInt(specialChars.length);
               sb.write(specialChars[selectID]);
+              continue;
             }
             if (isUpperCaseActive) {
               int rangeUpper = minUpperLetter + rng.nextInt((maxUpperLetter - minUpperLetter) + 1);
               sb.writeCharCode(rangeUpper);
+              continue;
             }
           }
         } else // 3 comes. special characters.
@@ -97,13 +106,16 @@ class Security {
             if (isUpperCaseActive) {
               int rangeUpper = minUpperLetter + rng.nextInt((maxUpperLetter - minUpperLetter) + 1);
               sb.writeCharCode(rangeUpper);
+              continue;
             }
             if (isLowerCaseActive) {
               int rangeLower = minLowerLetter + rng.nextInt((maxLowerLetter - minLowerLetter) + 1);
               sb.writeCharCode(rangeLower);
+              continue;
             }
             if (isNumberActive) {
               sb.write(rng.nextInt(10));
+              continue;
             }
           }
         }

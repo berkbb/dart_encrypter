@@ -16,7 +16,7 @@
 1. Add this to your package's pubspec.yaml file:
 
 ```dart
-dart_encrypter: ^1.0.2
+dart_encrypter: ^1.0.3
 ```
 
 2. Save the pubspec.yaml file. Or alternatively you can use this code snippet on console:
