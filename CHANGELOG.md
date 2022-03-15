@@ -1,4 +1,8 @@
-## [1.0.2] - 2022-03-11
+## [1.0.4] - 2022-03-15
+
+- Code formatting.
+
+## [1.0.3] - 2022-03-11
 
 - Password generator loop fixed.
 
