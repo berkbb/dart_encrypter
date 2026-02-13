@@ -1,3 +1,9 @@
+## [1.0.5] - 2026-02-13
+
+- Updated for Flutter 3.41.1 and Dart 3.11.0 compatibility.
+- Updated SDK constraints and dev dependencies.
+- Applied lint compatibility fixes.
+
 ## [1.0.4] - 2022-03-15
 
 - Code formatting.

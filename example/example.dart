@@ -3,19 +3,19 @@ import 'package:logbox_color/extensions.dart';
 import 'package:logbox_color/logbox_color.dart';
 
 void main() {
-  final _key = Security.generatePassword(true, true, true, true, 32); //32 chars
+  final key = Security.generatePassword(true, true, true, true, 32); //32 chars
   final iv = Security.generatePassword(true, true, true, true, 16); // 16 chars.
 
-  printLog("Key: $_key", LogLevel.verbose); // Print key.
+  printLog("Key: $key", LogLevel.verbose); // Print key.
 
   printLog("IV: $iv", LogLevel.verbose); // Print IV.
 
-  var item = "Hello my dear !".encryptMyData(_key!, iv!); //Example text.
+  var item = "Hello my dear !".encryptMyData(key!, iv!); //Example text.
 
   if (item != null) {
     // If item is not null.
     printLog("Encrypted text: $item", LogLevel.info); // Print encrypted text.
-    var deItem = item.decryptMyData(_key, iv); // decrypt text.
+    var deItem = item.decryptMyData(key, iv); // decrypt text.
     printLog("Decrypted text: $deItem", LogLevel.info); // Print decrypted text.
   }
 

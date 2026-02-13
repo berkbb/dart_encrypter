@@ -157,14 +157,14 @@ class Security {
 /// Encryption string extension.
 extension Encryption on String {
   ///* Info: Encyrpting the data.
-  ///* Params:  [_key] is is Key String, [iv] is IV String.
+  ///* Params:  [key] is is Key String, [iv] is IV String.
   ///* Returns: String?
   ///* Notes: Key length must be == 32 , IV length must be == 16.
-  String? encryptMyData(String _key, String iv) {
+  String? encryptMyData(String key, String iv) {
     try {
-      if (_key.length == 32 && iv.length == 16) {
-        final e = Encrypter(
-            AES(Key.fromUtf8(_key), mode: AESMode.ctr, padding: null));
+      if (key.length == 32 && iv.length == 16) {
+        final e =
+            Encrypter(AES(Key.fromUtf8(key), mode: AESMode.ctr, padding: null));
         final encryptedData = e.encrypt(this, iv: IV.fromUtf8(iv));
         String urlEncData = Uri.encodeComponent(encryptedData.base64);
         return urlEncData;
@@ -178,15 +178,15 @@ extension Encryption on String {
   }
 
   ///* Info: Decrypting the data.
-  ///* Params:  [_key] is is Key String, [iv] is IV String.
+  ///* Params:  [key] is is Key String, [iv] is IV String.
   ///* Returns: String?
   ///*  Notes: Key length must be == 32 , IV length must be == 16.
-  String? decryptMyData(String _key, String iv) {
+  String? decryptMyData(String key, String iv) {
     try {
-      if (_key.length == 32 && iv.length == 16) {
+      if (key.length == 32 && iv.length == 16) {
         String urlDec = Uri.decodeComponent(this);
-        final e = Encrypter(
-            AES(Key.fromUtf8(_key), mode: AESMode.ctr, padding: null));
+        final e =
+            Encrypter(AES(Key.fromUtf8(key), mode: AESMode.ctr, padding: null));
         final decryptedData =
             e.decrypt(Encrypted.fromBase64(urlDec), iv: IV.fromUtf8(iv));
 
